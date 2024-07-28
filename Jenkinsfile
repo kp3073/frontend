@@ -9,10 +9,11 @@ pipeline {
         }
         stage('Release'){
             when {
-                expression { TAG_NAME ==~ ".*" }
+                expression { env.TAG_NAME ==~ ".*" }
             }
             steps {
             sh 'env'
+            echo 'CI'
             }
             }
     }
