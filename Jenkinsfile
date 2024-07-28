@@ -4,6 +4,7 @@ pipeline {
     stages{
         stage('CI'){
             steps {
+            sh 'env'
             echo 'CI'
             }
         }
