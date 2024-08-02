@@ -20,8 +20,11 @@ pipeline {
         allOf{
             expression {env.GIT_BRANCH == 'origin/main'}
         }
+        steps {
+            echo 'CI'
         }
         }
+
         stage('Release'){
             when {
                 expression { env.TAG_NAME ==~ ".*" }
