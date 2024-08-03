@@ -8,7 +8,7 @@ pipeline {
         }
         }
 
-        stage('code Quality'){
+        stage('test'){
             steps {
             echo 'CI'
         }
