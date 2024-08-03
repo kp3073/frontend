@@ -8,12 +8,6 @@ pipeline {
         }
         }
 
-        stage('test'){
-            steps {
-            echo 'CI'
-        }
-        }
-
         stage('Release'){
            steps {
             sh 'env'
