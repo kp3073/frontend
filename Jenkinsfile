@@ -13,7 +13,7 @@ pipeline {
 
         stage('Release'){
         when {
-                expression { env.TAG_NAME ==~ ".*" }
+                expression { env.TAG_NAME == env.BRANCH_NAME }
                 }
          steps {
          sh 'env'
