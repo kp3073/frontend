@@ -9,14 +9,14 @@ pipeline {
         }
 
         stage('Release'){
-          when {
-                          expression { env.TAG_NAME ==~ ".*" }
-                  }
-           steps {
-            sh 'env'
-            echo 'CI'
-            }
-            }
+        when {
+                expression { env.TAG_NAME ==~ ".*" }
+                }
+         steps {
+         sh 'env'
+         echo 'CI'
+         }
+         }
     }
     }
 
