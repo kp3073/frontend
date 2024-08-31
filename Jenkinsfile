@@ -42,7 +42,7 @@ stage('Unit Tests'){
              }
             steps {
                  sh 'zip -r frontend-${TAG_NAME}.zip static index.html asset-manifest.json robots.txt'
-                 sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T backend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/backend/backend-${TAG_NAME}.zip"'
+                 sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
             }
        }
      }
