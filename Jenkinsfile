@@ -37,12 +37,13 @@ stage('Unit Tests'){
     }
 
        stage('Release'){
-         when {
-           expression { env.TAG_NAME ==~ ".*" }
-         }
-        steps {
-             echo 'CI'
-        }
+             when {
+               expression { env.TAG_NAME ==~ ".*" }
+             }
+            steps {
+                 sh 'zip -r frontend-${TAG_NAME}.zip static index.html asset-manifest.json robots.txt'
+                 sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T backend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/backend/backend-${TAG_NAME}.zip"'
+            }
        }
      }
    }
