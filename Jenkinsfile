@@ -2,7 +2,7 @@
 pipeline {
   agent { label 'workstation'}
 
-    stage('Code Quality'){
+stage('Code Quality'){
       when {
         allOf {
           expression { env.TAG_NAME != env.GIT_BRANCH }
@@ -28,13 +28,14 @@ stage('Unit Tests'){
       }
     }
 
-       stage('Release'){
-             when {
-               expression { env.TAG_NAME ==~ ".*" }
-             }
+stage('Release'){
+      when {
+        expression { env.TAG_NAME ==~ ".*" }
+        }
             steps {
                  sh 'zip -r frontend-${TAG_NAME}.zip static index.html asset-manifest.json robots.txt'
                  sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
-            }
+        }
        }
      }
+}
