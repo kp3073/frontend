@@ -6,12 +6,11 @@ stage('Code Quality'){
       when {
         allOf {
           expression { env.TAG_NAME != env.GIT_BRANCH }
-        }
-      }
+              }
+          }
       steps {
         sh 'sonar-scanner -Dsonar.host.url=http://172.31.81.125:9000 -Dsonar.login=admin -Dsonar.password=Canada1991$ -Dsonar.projectKey=frontend'
-
-      }
+            }
     }
 
 stage('Unit Tests'){
@@ -29,13 +28,12 @@ stage('Unit Tests'){
     }
 
 stage('Release'){
-      when {
-        expression { env.TAG_NAME ==~ ".*" }
+         when {
+           expression { env.TAG_NAME ==~ ".*" }
+         }
+        steps {
+             sh 'zip -r frontend-${TAG_NAME}.zip static asset-manifest.json index.html robots.txt'
+             sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
         }
-            steps {
-                 sh 'zip -r frontend-${TAG_NAME}.zip static index.html asset-manifest.json robots.txt'
-                 sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
-        }
-       }
      }
-}
+ }
