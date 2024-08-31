@@ -2,14 +2,6 @@
 pipeline {
   agent { label 'workstation'}
 
-  stages {
-    stage('Download Dependencies'){
-      steps {
-        sh 'npm install'
-        sh 'env'
-      }
-    }
-
     stage('Code Quality'){
       when {
         allOf {
