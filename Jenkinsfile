@@ -41,5 +41,4 @@ pipeline {
        }
      }
    }
-
-test
+stages
