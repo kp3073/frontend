@@ -41,6 +41,4 @@ pipeline {
        }
      }
    }
-stages
-asd
-asfas
+hey
