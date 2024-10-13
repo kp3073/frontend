@@ -42,6 +42,7 @@ pipeline {
             sh 'docker build -t 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME} .'
             sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471112727668.dkr.ecr.us-east-1.amazonaws.com'
             sh 'docker push 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}'
+            sh 'docker push 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}'
             }
        }
      }
