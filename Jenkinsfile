@@ -39,7 +39,7 @@ pipeline {
 //              sh 'curl  sSf -u "admin:Canada1991$" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.aligntune.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
 //         }
             steps {
-            sh 'docker build -t 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend-${TAG_NAME} .'
+            sh 'docker build -t 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME} .'
             sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471112727668.dkr.ecr.us-east-1.amazonaws.com'
             sh 'docker push 471112727668.dkr.ecr.us-east-1.amazonaws.com/frontend:${TAG_NAME}'
             }
