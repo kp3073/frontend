@@ -3,7 +3,7 @@ appVersion: 5.0.2
 replicas: 2
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
   targetPort: 80
 job:
@@ -11,3 +11,4 @@ job:
 
 ingress:
   enabled: true
+  port: 80
