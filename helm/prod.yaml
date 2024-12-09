@@ -8,3 +8,6 @@ service:
   targetPort: 80
 job:
   enabled: false
+
+ingress:
+  enabled: true
